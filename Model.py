@@ -38,12 +38,13 @@ class Model:
     def get_user_input(self, userinput):
         if userinput:
             user_char = userinput[:1]                                           # Only first letter
-            if user_char.lower() in self.new_word.lower():
-                self.change_user_input(user_char)                               # Found letter
-            else: # Letter not found
+            if (user_char.upper() in self.user_word) or (user_char.upper() in self.all_user_chars):
+                self.counter += 1
+            elif user_char.lower() in self.new_word.lower():
+                self.change_user_input(user_char)
+            else:                                                               # Letter not found
                 self.counter += 1
                 self.all_user_chars.append(user_char.upper())
-
 
 
     def change_user_input(self, user_char):
