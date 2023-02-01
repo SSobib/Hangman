@@ -37,6 +37,9 @@ class View(Tk):
         self.lbl_error, self.lbl_time, self.lbl_result = self.create_all_labels()
         self.char_input = self.create_input_entry()
 
+        # Bind Entry Key, If not game you get error
+        self.bind("<Return>", lambda event: self.controller.click_btn_send())
+
     def main(self):
         self.mainloop()
 
